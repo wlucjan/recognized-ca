@@ -2,11 +2,18 @@
   "name": "recognized-domain-ca",
   "version": "1.0.0",
   "description": "A domain logic for Recognized peer recognition domain",
-  "main": "index.js",
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "test": "mocha -r ts-node/register test/**/*.test.ts"
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
+    "pretest": "npm run tslint-check",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "precommit": "npm run prettier:write"
   },
   "keywords": [],
   "author": "Lucjan Wilczewski <lucjan.wilczewski@gmail.com>",
@@ -14,11 +21,24 @@
   "devDependencies": {
     "@types/chai": "4.1.7",
     "@types/mocha": "5.2.5",
+    "@types/sinon": "7.0.5",
     "chai": "4.2.0",
+    "husky": "1.3.1",
     "mocha": "5.2.0",
+    "prettier": "1.16.3",
     "should": "13.2.3",
+    "sinon": "7.2.3",
     "standard": "12.0.1",
     "ts-node": "8.0.2",
+    "tslint": "5.12.1",
+    "tslint-config-prettier": "1.17.0",
     "typescript": "3.2.4"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   }
 }
