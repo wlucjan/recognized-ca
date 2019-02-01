@@ -1,5 +1,5 @@
-import Boost from "./boost/Boost";
-import { Peer } from "../peer/Peer";
+import Boost from './boost/Boost'
+import { Peer } from '../peer/Peer'
 
 export default class Recognition {
   public readonly timestamp: number
@@ -14,5 +14,4 @@ export default class Recognition {
   ) {
     this.timestamp = Date.now()
   }
-  
 }
